@@ -16,7 +16,7 @@ namespace TicketTrackingSystem.Controllers
       
         private TicketTrackingSystemContext db = new TicketTrackingSystemContext();
 
-        // GET: Tickets/ResolveATicket/5
+        // GET: Tickets/ReopenTicket/5
         public ActionResult ReopenTicket(int? id)
         {
             if (id == null)
@@ -28,19 +28,20 @@ namespace TicketTrackingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(ticket);
+            ReopenConfirmed(id);
+            return RedirectToAction("ResolvedTickets");
         }
 
         // POST: Tickets/Delete/5
         [HttpPost, ActionName("ReopenTicket")]
         [ValidateAntiForgeryToken]
-        public ActionResult ReopenConfirmed(int id)
+        public ActionResult ReopenConfirmed(int? id)
         {
-            /*Ticket ticket = db.Tickets.Find(id);
-            db.Tickets.Remove(ticket);
+            Ticket ticket = db.Tickets.Find(id);
+            ticket.TicketIsResolved = false;
             db.SaveChanges();
-            */
-            return RedirectToAction("Home");
+            
+            return View("ResolvedTickets");
         }
 
         // GET: Tickets/ResolveATicket/5
@@ -55,21 +56,22 @@ namespace TicketTrackingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(ticket);
+            ResolveConfirmed(id);
+            return RedirectToAction("OpenTickets");
         }
 
         // POST: Tickets/ResolveATicket/5
-        [HttpPost, ActionName("ResolveATicket")]
+       [HttpPost, ActionName("ResolveATicket")]
         [ValidateAntiForgeryToken]
-        public ActionResult ResolveConfirmed(int id)
+        public ActionResult ResolveConfirmed(int? id)
         {
-           /* Ticket ticket = db.Tickets.Find(id);
-            db.Tickets.Remove(ticket);
+            Ticket ticket = db.Tickets.Find(id);
+            ticket.TicketIsResolved = true;
             db.SaveChanges();
-            */
-            return RedirectToAction("Home");
-        }
 
+            return View("OpenTickets");
+        }
+        
        
 
         // GET: Tickets/ResolvedTickets
