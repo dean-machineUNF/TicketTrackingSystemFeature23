@@ -14,22 +14,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TicketID)
+
+            @Html.ActionLink("ID", "OpenTickets", new { sortBy = 1 })
+        </th>
+
+        <th>
+            @Html.ActionLink("Description", "OpenTickets", new { sortBy = 2 })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketDescription)
+            @Html.ActionLink("Comment", "OpenTickets", new { sortBy = 3 })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketComment)
+            @Html.ActionLink("Severity", "OpenTickets", new { sortBy = 4 })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketSeverity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketDateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketIsResolved)
+            @Html.ActionLink("Date Created", "OpenTickets", new { sortBy = 5 })
         </th>
         <th></th>
     </tr>
@@ -54,9 +56,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TicketDateCreated)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TicketIsResolved)
-            </td>
+           
            <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TicketID }) |
                 @Html.ActionLink("Resolve", "ResolveATicket", new { id = item.TicketID }) |
