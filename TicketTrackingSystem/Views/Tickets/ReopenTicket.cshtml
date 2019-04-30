@@ -1,0 +1,66 @@
+﻿@model TicketTrackingSystem.Models.Ticket
+
+@{
+    ViewBag.Title = "Re-Open a Ticket";
+}
+
+<h2>Re-Open a Ticket</h2>
+
+<h3>Are you sure you want to re-open this ticket?</h3>
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketSeverity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketSeverity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketDateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketDateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketIsResolved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketIsResolved)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Re-Open Ticket" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Resolved Tickets", "ResolvedTickets")
+        </div>
+    }
+</div>
+

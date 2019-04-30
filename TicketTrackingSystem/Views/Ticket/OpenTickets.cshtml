@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TicketTrackingSystem.Models.Ticket>
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,8 +15,90 @@
 <div>
     <p>
 
-         View Open Tickets here!
+        View Open Tickets here!
 
 
     </p>
+</div>
+
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        @foreach (var item in Model)
+        {
+
+
+            <dt>
+
+
+                ID
+            </dt>
+
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.TicketID)
+            </dd>
+
+            <dt>
+
+                Description
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.TicketDescription)
+            </dd>
+
+
+
+            <dt>
+                
+                Comment
+            </dt>
+
+            <dd>
+
+                @Html.DisplayFor(modelItem => item.TicketComment)
+            </dd>
+
+            <dt>
+
+                Date Created
+            </dt>
+
+            <dd>
+
+                @Html.DisplayFor(modelItem => item.TicketDateCreated.Month)/@Html.DisplayFor(modelItem => item.TicketDateCreated.Day)/@Html.DisplayFor(modelItem => item.TicketDateCreated.Year)
+            </dd>
+
+            
+            <dt>
+                Severity
+                
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.TicketSeverity)
+            </dd>
+
+
+          
+            
+            <dt>
+                Resolved?
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.TicketIsResolved)
+            </dd>
+        
+           
+           
+
+        }
+    </dl>
+
 </div>

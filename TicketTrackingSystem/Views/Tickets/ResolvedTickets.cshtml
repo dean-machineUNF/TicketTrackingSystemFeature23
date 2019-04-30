@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TicketTrackingSystem.Models.Ticket>
+
+@{
+    ViewBag.Title = "Resolved Tickets";
+}
+
+<h2>Resolved Tickets</h2>
+@*
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    *@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketID)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.TicketDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketSeverity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketDateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketIsResolved)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketID)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketSeverity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketDateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketIsResolved)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TicketID }) |
+                @Html.ActionLink("Re-Open Ticket", "ReopenTicket", new { id = item.TicketID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TicketID })
+            </td>
+               
+        </tr>
+    }
+
+</table>
