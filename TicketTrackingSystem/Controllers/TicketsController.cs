@@ -10,6 +10,7 @@ using TicketTrackingSystem.Models;
 
 namespace TicketTrackingSystem.Controllers
 {
+    //[Authorize]
     public class TicketsController : Controller
     {
       
