@@ -63,5 +63,7 @@ namespace TicketTrackingSystem.Models
         public System.Data.Entity.DbSet<TicketTrackingSystem.Models.Ticket> Tickets { get; set; }
 
         public System.Data.Entity.DbSet<TicketTrackingSystem.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<TicketTrackingSystem.Models.HRReferralCode> HRReferralCodes { get; set; }
     }
 }

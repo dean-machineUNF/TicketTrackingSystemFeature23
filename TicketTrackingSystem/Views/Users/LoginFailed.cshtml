@@ -1,0 +1,40 @@
+﻿@model TicketTrackingSystem.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        <h3>
+            Login Failed
+        </h3>
+        <hr />
+        @**@
+        <p>
+            Your login attempt with the below information failed. Please try again or register a new account.
+        </p>
+        <p>
+            Email: @Html.DisplayFor(model => model.UserEmail)
+            <br />
+            <br />
+            Password: @Html.DisplayFor(model => model.Password)
+        </p>
+        <hr />
+        <div>
+            @Html.ActionLink("Try To Login Again?", "Index")
+        </div>
+        <div>
+            @Html.ActionLink("Register Instead?", "Register")
+        </div>
+    </div>
+</body>
+</html>

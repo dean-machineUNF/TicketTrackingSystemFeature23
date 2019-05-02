@@ -1,0 +1,39 @@
+﻿@model TicketTrackingSystem.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        <h3>
+            Login Successful
+        </h3>
+        <hr />
+        <p>
+            You have successfully logged in to the account listed below.
+        </p>
+        <p>
+            Email: @Html.DisplayFor(model => model.UserEmail)
+            <br />
+            <br />
+            User Role: @Html.DisplayFor(model => model.UserRole)
+        </p>
+        <hr />
+        <div>
+            @Html.ActionLink("Click Here to Continue to the Ticket Tracker Homepage", "LoginRedirect", Html.ValueFor(model => model.UserRole))
+        </div>
+        @*<div>
+                @Html.ActionLink("Register Instead?", "Register")
+            </div>
+        *@
+    </div>
+</body>
+</html>

@@ -14,6 +14,8 @@ namespace TicketTrackingSystem.Controllers
     public class TicketsController : Controller
     {
       
+
+      
       
         private TicketTrackingSystemContext db = new TicketTrackingSystemContext();
 
@@ -30,7 +32,7 @@ namespace TicketTrackingSystem.Controllers
                 return HttpNotFound();
             }
             ReopenConfirmed(id);
-            return RedirectToAction("ResolvedTickets");
+            return RedirectToAction("AdminResolvedTickets");
         }
 
         // POST: Tickets/Delete/5
@@ -42,7 +44,7 @@ namespace TicketTrackingSystem.Controllers
             ticket.TicketIsResolved = false;
             db.SaveChanges();
             
-            return View("ResolvedTickets");
+            return View("AdminResolvedTickets");
         }
 
         // GET: Tickets/ResolveATicket/5
@@ -58,7 +60,7 @@ namespace TicketTrackingSystem.Controllers
                 return HttpNotFound();
             }
             ResolveConfirmed(id);
-            return RedirectToAction("OpenTickets");
+            return RedirectToAction("AdminOpenTickets");
         }
 
         // POST: Tickets/ResolveATicket/5
@@ -70,7 +72,7 @@ namespace TicketTrackingSystem.Controllers
             ticket.TicketIsResolved = true;
             db.SaveChanges();
 
-            return View("OpenTickets");
+            return View("AdminOpenTickets");
         }
         
        
@@ -121,55 +123,193 @@ namespace TicketTrackingSystem.Controllers
             
         }
 
-        // GET: Tickets/OpenTickets
-        public ActionResult OpenTickets(int? sortBy)
+
+
+        // GET: Tickets/ResolvedTickets
+        public ActionResult AdminResolvedTickets(int? sortBy)
         {
             using (var db = new TicketTrackingSystemContext())
             {
-                var openTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).ToList();
+                var resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).ToList();
+
 
                 if (sortBy == 1)
                 {
-                    openTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketID).ToList();
+
+                    resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).OrderBy(d => d.TicketID).ToList();
+
+
                 }
 
                 if (sortBy == 2)
                 {
-                    openTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketDescription).ToList();
+                    resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).OrderBy(d => d.TicketDescription).ToList();
                 }
 
                 if (sortBy == 3)
                 {
-                    openTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketComment).ToList();
+                    resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).OrderBy(d => d.TicketComment).ToList();
                 }
 
                 if (sortBy == 4)
                 {
-                    openTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderByDescending(d => d.TicketSeverity).ToList();
+                    resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).OrderByDescending(d => d.TicketSeverity).ToList();
                 }
 
                 if (sortBy == 5)
                 {
-                    openTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketDateCreated).ToList();
+                    resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).OrderBy(d => d.TicketDateCreated).ToList();
                 }
 
                 //var resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).ToList();
 
 
 
-                return View(openTickets);
+                return View(resolvedTickets);
             }
+
+
         }
 
-        // GET: Tickets
-        public ActionResult Home()
+        // GET: Tickets/OpenTickets
+        public ActionResult OpenTickets(int? sortBy)
         {
-            return View();
+
+
+
+
+            using (var db = new TicketTrackingSystemContext())
+            {
+                var OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).ToList();
+
+                if (sortBy == 1)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketID).ToList();
+                }
+
+                if (sortBy == 2)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketDescription).ToList();
+                }
+
+                if (sortBy == 3)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketComment).ToList();
+                }
+
+                if (sortBy == 4)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderByDescending(d => d.TicketSeverity).ToList();
+                }
+
+                if (sortBy == 5)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketDateCreated).ToList();
+                }
+
+                //var resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).ToList();
+
+
+
+                return View(OpenTickets);
+            }
+           
         }
+
+
+        // GET: Tickets/OpenTickets
+        public ActionResult AdminOpenTickets(int? sortBy)
+        {
+
+
+
+
+            using (var db = new TicketTrackingSystemContext())
+            {
+                var OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).ToList();
+
+                if (sortBy == 1)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketID).ToList();
+                }
+
+                if (sortBy == 2)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketDescription).ToList();
+                }
+
+                if (sortBy == 3)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketComment).ToList();
+                }
+
+                if (sortBy == 4)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderByDescending(d => d.TicketSeverity).ToList();
+                }
+
+                if (sortBy == 5)
+                {
+                    OpenTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(false)).OrderBy(d => d.TicketDateCreated).ToList();
+                }
+
+                //var resolvedTickets = db.Tickets.Where(e => e.TicketIsResolved.Equals(true)).ToList();
+
+
+
+                return View(OpenTickets);
+            }
+
+        }
+
+        // GET: Tickets/LandingPage
+        public ActionResult AccessDenied(User thisUser)
+        {
+             return View(thisUser);
+           
+
+        }
+
+
+        // GET: Tickets/LandingPage
+        public ActionResult LandingPage(User thisUser)
+        {
+            User ticketsControllerSessionUser = thisUser;
+            if (ticketsControllerSessionUser.UserRole == "USER")
+            {
+                
+                return View(ticketsControllerSessionUser);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", ticketsControllerSessionUser);
+            }
+            
+        }
+
+
+
+        // GET: Tickets/LandingPageAdmin
+        public ActionResult LandingPageAdmin(User thisUser)
+        {
+            User ticketsControllerSessionUser = thisUser;
+            if (ticketsControllerSessionUser.UserRole == "ADMIN")
+            {
+                return View(ticketsControllerSessionUser);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", ticketsControllerSessionUser);
+            }
+
+            
+        }
+
 
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -199,11 +339,39 @@ namespace TicketTrackingSystem.Controllers
             {
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-                return RedirectToAction("Home");
+                return RedirectToAction("OpenTickets");
             }
 
             return View(ticket);
         }
+
+
+        // GET: Tickets/Create
+        public ActionResult AdminCreate()
+        {
+            return View();
+        }
+
+        // POST: Tickets/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdminCreate([Bind(Include = "TicketID,TicketDescription,TicketComment,TicketSeverity,TicketDateCreated,TicketIsResolved")] Ticket ticket)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
+                return RedirectToAction("AdminOpenTickets");
+            }
+
+            return View(ticket);
+        }
+
+
+       
+        
 
         // GET: Tickets/Edit/5
         public ActionResult Edit(int? id)
@@ -231,7 +399,7 @@ namespace TicketTrackingSystem.Controllers
             {
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Home");
+                return RedirectToAction("AdminOpenTickets");
             }
             return View(ticket);
         }
@@ -259,7 +427,7 @@ namespace TicketTrackingSystem.Controllers
             Ticket ticket = db.Tickets.Find(id);
             db.Tickets.Remove(ticket);
             db.SaveChanges();
-            return RedirectToAction("Home");
+            return RedirectToAction("AdminOpenTickets");
         }
 
         protected override void Dispose(bool disposing)

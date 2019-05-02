@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        <h3>
+            Registration Failed
+        </h3>
+        <hr />
+        <p>
+            Your registration attempt failed because the HR Referral Code you entered could not be found. Please try again or contact your HR Manager to verify the accuracy of your referral code.
+        </p>
+        <hr />
+        <div>
+            @Html.ActionLink("Try To Register Again?", "Register")
+        </div>
+
+    </div>
+</body>
+</html>

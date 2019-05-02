@@ -152,13 +152,8 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministrativeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,15 +167,33 @@
     <Compile Include="Migrations\201905010402137_newUserTable.Designer.cs">
       <DependentUpon>201905010402137_newUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905011529357_dropUsersTable.cs" />
+    <Compile Include="Migrations\201905011529357_dropUsersTable.Designer.cs">
+      <DependentUpon>201905011529357_dropUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011543073_addADiffUsersTable.cs" />
+    <Compile Include="Migrations\201905011543073_addADiffUsersTable.Designer.cs">
+      <DependentUpon>201905011543073_addADiffUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011649142_addHRReferralCodesTable.cs" />
+    <Compile Include="Migrations\201905011649142_addHRReferralCodesTable.Designer.cs">
+      <DependentUpon>201905011649142_addHRReferralCodesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011723561_changedHRReferralCodesTable.cs" />
+    <Compile Include="Migrations\201905011723561_changedHRReferralCodesTable.Designer.cs">
+      <DependentUpon>201905011723561_changedHRReferralCodesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011726460_changedHRReferralCodesTable2.cs" />
+    <Compile Include="Migrations\201905011726460_changedHRReferralCodesTable2.Designer.cs">
+      <DependentUpon>201905011726460_changedHRReferralCodesTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\HRReferralCode.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketTrackingSystemContext.cs" />
+    <Compile Include="Models\TicketViewModel.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -214,7 +227,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -227,24 +239,20 @@
     <Content Include="Views\Tickets\ResolvedTickets.cshtml" />
     <Content Include="Views\Tickets\ResolveATicket.cshtml" />
     <Content Include="Views\Tickets\ReopenTicket.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\RegisterAdmin.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\UnAuthorizedRegister.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
+    <Content Include="Views\Users\LoginFailed.cshtml" />
+    <Content Include="Views\Users\RegistrationFailed.cshtml" />
+    <Content Include="Views\Users\LoginConfirmed.cshtml" />
+    <Content Include="Views\Tickets\LandingPage.cshtml" />
+    <Content Include="Views\Users\RedirectFailed.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Tickets\LandingPageAdmin.cshtml" />
+    <Content Include="Views\Tickets\AccessDenied.cshtml" />
+    <Content Include="Views\Tickets\AdminCreate.cshtml" />
+    <Content Include="Views\Tickets\AdminOpenTickets.cshtml" />
+    <Content Include="Views\Tickets\AdminResolvedTickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -269,6 +277,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905010402137_newUserTable.resx">
       <DependentUpon>201905010402137_newUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011529357_dropUsersTable.resx">
+      <DependentUpon>201905011529357_dropUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011543073_addADiffUsersTable.resx">
+      <DependentUpon>201905011543073_addADiffUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011649142_addHRReferralCodesTable.resx">
+      <DependentUpon>201905011649142_addHRReferralCodesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011723561_changedHRReferralCodesTable.resx">
+      <DependentUpon>201905011723561_changedHRReferralCodesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011726460_changedHRReferralCodesTable2.resx">
+      <DependentUpon>201905011726460_changedHRReferralCodesTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

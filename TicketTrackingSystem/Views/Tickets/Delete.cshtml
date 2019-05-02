@@ -4,6 +4,21 @@
     ViewBag.Title = "Delete";
 }
 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>
+    Admin Menu Options
+</h4>
+
+@Html.ActionLink("Create a New Ticket", "AdminCreate")
+    |
+@Html.ActionLink("Update Open Tickets", "AdminOpenTickets")
+    |
+@Html.ActionLink("Update Resolved Tickets", "AdminResolvedTickets")
+<br /><br />
+<hr />
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -61,15 +76,16 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        <input type="submit" value="Delete" class="btn btn-default" /> 
-        <br />
-        @Html.ActionLink("Back to Resolved Tickets", "ResolvedTickets")
-        <br />
-        @Html.ActionLink("Back to Open Tickets", "OpenTickets")
-    </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <br />
+            @Html.ActionLink("Back to Resolved Tickets", "ResolvedTickets")
+            <br />
+            @Html.ActionLink("Back to Open Tickets", "OpenTickets")
+        </div>
     }
 </div>

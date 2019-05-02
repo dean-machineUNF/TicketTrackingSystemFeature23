@@ -1,0 +1,37 @@
+﻿@model TicketTrackingSystem.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h4>
+            Admin Menu Options
+        </h4>
+        <p>
+            Hello  @Html.DisplayFor(model => model.UserEmail)!
+            <br /><br />
+            As an Admin, you can:
+            <br /><br />
+            @Html.ActionLink("Create a New Ticket", "AdminCreate")
+            |
+            @Html.ActionLink("Update Open Tickets", "AdminOpenTickets")
+            |
+            @Html.ActionLink("Update Resolved Tickets", "AdminResolvedTickets")
+            
+            
+
+
+
+        </p>
+    </div>
+</body>
+</html>

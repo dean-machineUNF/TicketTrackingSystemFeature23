@@ -13,13 +13,15 @@
 
 <p>
     <h4>
-        User Menu Options
+        Admin Menu Options
     </h4>
-    @Html.ActionLink("Create a New Ticket", "Create")
+
+    @Html.ActionLink("Create a New Ticket", "AdminCreate")
     |
-    @Html.ActionLink("View Open Tickets", "OpenTickets")
+    @Html.ActionLink("Update Open Tickets", "AdminOpenTickets")
     |
-    @Html.ActionLink("View Resolved Tickets", "ResolvedTickets")
+    @Html.ActionLink("Update Resolved Tickets", "AdminResolvedTickets")
+
     <br /><br />
 
 </p>

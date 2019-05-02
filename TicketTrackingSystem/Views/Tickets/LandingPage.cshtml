@@ -1,0 +1,39 @@
+﻿@model TicketTrackingSystem.Models.User
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+       
+        <p>
+            <h4>
+                User Menu Options
+            </h4>
+           
+            Hello  @Html.DisplayFor(model => model.UserEmail)!
+            <br />
+            <br />
+            As a User, you can:
+            <br /><br />
+            @Html.ActionLink("Create a New Ticket", "Create")
+            |
+            @Html.ActionLink("View Open Tickets", "OpenTickets")
+            |
+            @Html.ActionLink("View Resolved Tickets", "ResolvedTickets")
+            <br /><br />
+            If a ticket needs to be resolved, re-opened, or edited, please contact your team's Admin
+        </p>
+        <hr />
+    </div>
+</body>
+</html>

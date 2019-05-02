@@ -3,9 +3,25 @@
 @model TicketTrackingSystem.Models.Ticket
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    ViewBag.Title = "Edit";
+}
+<p>
+<h4>
+    Admin Menu Options
+</h4>
+@Html.ActionLink("Create a New Ticket", "AdminCreate")
+    |
+@Html.ActionLink("Update Open Tickets", "AdminOpenTickets")
+    |
+@Html.ActionLink("Update Resolved Tickets", "AdminResolvedTickets")
+
+<br /><br />
+    </p>
+<hr />
 <h2>Edit</h2>
 
 
@@ -61,7 +77,7 @@
             @Html.LabelFor(model => model.TicketDateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TicketDateCreated, new { htmlAttributes = new { @class = "form-control" } })
-               
+
 
                 @Html.ValidationMessageFor(model => model.TicketDateCreated, "", new { @class = "text-danger" })
             </div>

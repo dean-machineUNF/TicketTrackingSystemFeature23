@@ -11,17 +11,15 @@
 
 <p>
     <h4>
-        User Menu Options
+        Admin Menu Options
     </h4>
 
-    
-    @Html.ActionLink("Create a New Ticket", "Create")
+    @Html.ActionLink("Create a New Ticket", "AdminCreate")
     |
-    @Html.ActionLink("View Open Tickets", "OpenTickets")
+    @Html.ActionLink("Update Open Tickets", "AdminOpenTickets")
     |
-    @Html.ActionLink("View Resolved Tickets", "ResolvedTickets")
+    @Html.ActionLink("Update Resolved Tickets", "AdminResolvedTickets")
     <br /><br />
-   
 </p>
 <hr />
 @*
@@ -34,23 +32,23 @@
     <tr>
         <th>
 
-            @Html.ActionLink("ID", "ResolvedTickets", new { sortBy = 1 })
+            @Html.ActionLink("ID", "AdminResolvedTickets", new { sortBy = 1 })
         </th>
 
         <th>
-            @Html.ActionLink("Description", "ResolvedTickets", new { sortBy = 2 })
+            @Html.ActionLink("Description", "AdminResolvedTickets", new { sortBy = 2 })
 
         </th>
         <th>
-            @Html.ActionLink("Comment", "ResolvedTickets", new { sortBy = 3 })
+            @Html.ActionLink("Comment", "AdminResolvedTickets", new { sortBy = 3 })
 
         </th>
         <th>
-            @Html.ActionLink("Severity", "ResolvedTickets", new { sortBy = 4 })
+            @Html.ActionLink("Severity", "AdminResolvedTickets", new { sortBy = 4 })
 
         </th>
         <th>
-            @Html.ActionLink("Date Created", "ResolvedTickets", new { sortBy = 5 })
+            @Html.ActionLink("Date Created", "AdminResolvedTickets", new { sortBy = 5 })
         </th>
 
         <th></th>
@@ -76,13 +74,13 @@
                 @Html.DisplayFor(modelItem => item.TicketDateCreated)
             </td>
 
-            @*
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TicketID }) |
-                @Html.ActionLink("Re-Open Ticket", "ReopenTicket", new { id = item.TicketID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TicketID })
-            </td>
-                *@
+            
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TicketID }) |
+                    @Html.ActionLink("Re-Open Ticket", "ReopenTicket", new { id = item.TicketID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TicketID })
+                </td>
+            
         </tr>
     }
 

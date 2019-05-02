@@ -63,6 +63,7 @@
   <ItemGroup>
     <Build Include="Ticket.sql" />
     <Build Include="Users.sql" />
+    <Build Include="HRReferralCodes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TicketTrackingSystemDB.refactorlog" />
