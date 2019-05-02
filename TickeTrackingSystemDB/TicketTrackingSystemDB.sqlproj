@@ -71,5 +71,6 @@
   <ItemGroup>
     <PostDeploy Include="dbo\Scripts\SeedTicket.sql" />
     <None Include="dbo\Scripts\Script.PostDeployment1.sql" />
+    <None Include="dbo\Scripts\SeedHRReferralCodes.sql" />
   </ItemGroup>
 </Project>
